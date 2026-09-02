@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
+  <Identity Name="BingtangXH.Dahlia-Projector" Version="1.0.8.8" Publisher="CN=ninei" />
+  <Properties>
+    <DisplayName>Reversed Projector</DisplayName>
+    <PublisherDisplayName>BingtangXH</PublisherDisplayName>
+    <Logo>storelogo.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.2.1</OSMinVersion>
+    <OSMaxVersionTested>6.2.1</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" StartPage="default.html">
+      <VisualElements DisplayName="Reversed Projector" Logo="logo.png" SmallLogo="smalllogo.png" Description="接收来自局域网其他设备的投屏媒体流" ForegroundText="dark" BackgroundColor="#A6E35F">
+        <DefaultTile ShowName="wideLogoOnly" ShortName="Reversed Projector" WideLogo="widelogo.png" />
+        <SplashScreen Image="splashscreen.png" BackgroundColor="#A6E35F" />
+        <InitialRotationPreference>
+          <Rotation Preference="portrait" />
+          <Rotation Preference="landscape" />
+          <Rotation Preference="portraitFlipped" />
+          <Rotation Preference="landscapeFlipped" />
+        </InitialRotationPreference>
+      </VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="privateNetworkClientServer" />
+    <Capability Name="internetClientServer" />
+    <Capability Name="internetClient" />
+  </Capabilities>
+</Package>

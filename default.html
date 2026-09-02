@@ -1,0 +1,100 @@
+﻿<!--
+THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF
+ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO
+THE IMPLIED WARRANTIES OF MERCHANTABILITY AND/OR FITNESS FOR A
+PARTICULAR PURPOSE.
+
+Copyright (c) Microsoft Corporation. All rights reserved
+-->
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <title>Dahlia Projector</title>
+
+    <!-- WinJS 引用 -->
+    <link href="//Microsoft.WinJS.1.0/css/ui-dark.css" rel="stylesheet" />
+    <script src="//Microsoft.WinJS.1.0/js/base.js"></script>
+    <script src="//Microsoft.WinJS.1.0/js/ui.js"></script>
+
+    <!-- Dahlia_Projector 引用 -->
+    <link href="/css/default.css" rel="stylesheet" />
+    <script>
+        function comeoutAppBar() {
+            document.getElementById("appBar").winControl.show();
+        }
+        function showSettings() {
+            var settingsFlyout = document.getElementById("settingsFlyout").winControl;
+            var settingsButton = document.getElementById("settingsButton").winControl;
+            settingsFlyout.show(settingsButton);
+        }
+        function clear2() {
+            document.getElementById("errors").textContent = "";
+            document.getElementById("shapes").textContent = "";
+        }
+    </script>
+    <script src="/js/default.js"></script>
+</head>
+<body style="background-color:#042215; ">
+    <h2 style="color:red; display:none; text-align:center" id="preReleaseWarning" >
+        This is Pre-release or UNDER CONSTRUCTIONS!
+        <br />
+        您现在正在使用的是个没做好的版本
+    </h2>
+    <!--<div id="DMRsContainer" style="position:absolute; left:0px;">-->
+    <div id="DMRsContainer" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background-size: cover; background-position: center;">
+        <video id="dmrVideo" style="border:1px solid black; display:none; ruby-align:center;" width="100%" height="100%" controls="controls" ></video>
+        <img id="dmrImage" alt="这里本应显示投影的图片 The image that should be projected is supposed to be displayed here." style="border:1px solid black; display:none; ruby-align:center;" width="100%" height="100%" />
+    </div>
+    <p id="shapes" style="white-space:pre-line;color:deeppink;"></p>
+    <p id="errors" style="white-space:pre-line;color:red;"></p>
+    <div id="appBar" data-win-control="WinJS.UI.AppBar" style="background-color:#A6E35F; color:#000000;">
+        <button data-win-control="WinJS.UI.AppBarCommand" id="settingsButton"
+            data-win-options="{label:'选项 Opt.', icon:'settings', section:'selection', tooltip:'更改选项 Change other options'}"
+            onclick="showSettings();">
+        </button>
+        <button data-win-control="WinJS.UI.AppBarCommand" id="dismissButton"
+            data-win-options="{label:'清除 Clr.', icon:'&#xE106;', section:'global', tooltip:'清除日志 Clear the log'}"
+            onclick="clear2();">
+        </button>
+        <button data-win-control="WinJS.UI.AppBarCommand" id="startButton"
+            data-win-options="{label:'开始 Start', icon:'play', section:'global', tooltip:'启动接收器 Start the receiver'}"
+            onclick="">
+        </button>
+        <button data-win-control="WinJS.UI.AppBarCommand" id="stopButton"
+            data-win-options="{label:'停止 Stop', icon:'stop', section:'global', tooltip:'停止接收器 Stop the receiver'}"
+            onclick="">
+        </button>
+        <button data-win-control="WinJS.UI.AppBarCommand" id="aboutButton"
+            data-win-options="{label:'关于 About', icon:'emoji2', section:'global', tooltip:'关于本程序 About this program'}"
+            onclick="about();">
+        </button>
+
+    </div>
+    <div class="win-bottomlayout" id="bar-to-show-appbar" onclick="document.getElementById('appBar').winControl.show();"><span>•••</span></div>
+    <style>
+        .win-bottomlayout {
+            background-color: gray; /* 可以设置成其他值，设置半透明也可。主要是为了区分能识别出这个位置有个 Bar */
+            position: absolute; top: auto; text-align: center;
+            height: 15px; bottom: 0px; left: 0px; right: 0px; overflow: hidden;
+            display: -ms-flexbox;   /* IE Flex容器 */
+            -ms-flex-pack: center;  /* 主轴居中 */
+            opacity: 0.24;
+        }
+        .win-bottomlayout > span { position: absolute; right: 56px; left: auto; color: white; top: -2px; }
+    </style>
+    <div id="settingsFlyout" data-win-control="WinJS.UI.Flyout">
+        <label class="win-switch" style="ruby-align: center">
+            <input type="checkbox" class="win-switch-input" id="followSourceVolume" checked>
+            <span class="win-switch-content">跟随发送端的音量调节<br>
+                Follow volume value from the sender</span>
+            <span class="win-switch-track">
+                <span class="win-switch-thumb"></span>
+            </span>
+        </label>
+    </div> 
+</body>
+</html>
